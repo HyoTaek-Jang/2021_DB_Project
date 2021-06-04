@@ -10,9 +10,9 @@ public class DB {
     public static Statement setUpDB() throws SQLException {
 
 //      사용자 url, id, pwd 맞게 설정
-        String url = Env.getUrlTaek();
-        String user = Env.getUserTaek();
-        String password = Env.getPwdTaek();
+        String url = Env.getUrl();
+        String user = Env.getUser();
+        String password = Env.getPwd();
 
         try {
             conn = DriverManager.getConnection(url, user, password);
