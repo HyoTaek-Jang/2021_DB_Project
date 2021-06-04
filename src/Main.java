@@ -47,7 +47,10 @@ public class Main {
             System.out.println("------------------------------------------------------------------\n");
             try{
                 switch (command) {
-                    case 0 -> System.out.println("프로그램을 종료합니다.");
+                    case 0 -> {
+                        DB.closeDB();
+                        System.out.println("프로그램을 종료합니다.");
+                    }
                     case 9 -> adminService.setTables();
                     case 10 -> adminService.showTables();
                     default -> System.out.println("잘못된 입력입니다. 다시 입력해주세요.");

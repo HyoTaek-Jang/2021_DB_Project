@@ -33,6 +33,8 @@ public class DB {
                 rs.close();
                 st.close();
                 conn.close();
+
+                System.out.println("Success DB disconnect");
             } catch (SQLException sqlEX) {
                 throw sqlEX;
             }
