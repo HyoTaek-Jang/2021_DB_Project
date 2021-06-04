@@ -2,13 +2,12 @@ package config;
 
 import java.sql.*;
 
-public class SetUpDB {
+public class DB {
+    private static Connection conn = null;
+    private static Statement st = null;
+    static ResultSet rs = null;
 
     public static Statement setUpDB() throws SQLException {
-
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
 
 //      사용자 url, id, pwd 맞게 설정
         String url = Env.getUrlTaek();
@@ -25,7 +24,11 @@ public class SetUpDB {
             System.out.println("Success Connecting");
         } catch (SQLException sqlEX) {
             throw sqlEX;
-        } finally {
+        }
+        return st;
+    }
+
+    public static void closeDB() throws SQLException {
             try {
                 rs.close();
                 st.close();
@@ -33,9 +36,5 @@ public class SetUpDB {
             } catch (SQLException sqlEX) {
                 throw sqlEX;
             }
-            return st;
-        }
     }
-
-
 }
