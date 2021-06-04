@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CardInfoRepository {
-    private Statement st;
-    private ResultSet rs;
+    private final Statement st;
     private String query;
     private final String folderLocation = Env.getFolderLocation();
 
@@ -38,7 +37,7 @@ public class CardInfoRepository {
 
     public void showTable() throws SQLException {
         query = "select * from CardInfo";
-        rs = st.executeQuery(query);
+        ResultSet rs = st.executeQuery(query);
         System.out.printf("%-8s%-20s%-20s", "cardID", "cardName", "monthlyUseCount");
         System.out.println("\n-------------------------------------------------------------------------------------------");
 

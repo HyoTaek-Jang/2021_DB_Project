@@ -7,8 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DiscountInfoRepository {
-    private Statement st;
-    private ResultSet rs;
+    private final Statement st;
     private String query;
     private final String folderLocation = Env.getFolderLocation();
 
@@ -39,7 +38,7 @@ public class DiscountInfoRepository {
 
     public void showTable() throws SQLException {
         query = "select * from discountInfo";
-        rs = st.executeQuery(query);
+        ResultSet rs = st.executeQuery(query);
         System.out.printf("%-8s%-20s%-20s%-20s", "cardID", "cafeName", "discountType", "discountValue");
         System.out.println("\n-------------------------------------------------------------------------------------------");
 
