@@ -16,7 +16,7 @@ public class CafeRepository {
         this.st = st;
     }
 
-    public void createCafeTable() throws SQLException {
+    public void createTable() throws SQLException {
         query = "DROP TABLE IF EXISTS Cafe;\n"+
                 "CREATE TABLE Cafe (\n" +
                 "  cafeID integer,\n" +
