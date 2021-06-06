@@ -38,6 +38,7 @@ public class Main {
         System.out.println("Run Program");
         while (command != 0){
             System.out.println("0 : Exit Program");
+            System.out.println("1 : Update AppliedCardTable");
             System.out.println("9 : Set Tables | Administrator only");
             System.out.println("10 : Show Tables | Administrator only");
             System.out.print("원하시는 메뉴를 선택해주세요. : ");
@@ -51,6 +52,7 @@ public class Main {
                         DB.closeDB();
                         System.out.println("프로그램을 종료합니다.");
                     }
+                    case 1 -> adminService.updateAppliedCard(st);
                     case 9 -> adminService.setTables();
                     case 10 -> adminService.showTables();
                     default -> System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
