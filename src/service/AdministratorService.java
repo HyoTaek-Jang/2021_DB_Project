@@ -16,7 +16,6 @@ public class AdministratorService {
         cafeRepository = new CafeRepository(st);
         cardInfoRepository = new CardInfoRepository(st);
         discountInfoRepository = new DiscountInfoRepository(st);
-
     }
 
     public void setTables() throws SQLException {
