@@ -110,7 +110,7 @@ public class DiscountInfoRepository {
     }
 
     public void queryBrand(String brandName) throws SQLException {
-        System.out.println(brandName + ", 해당 브랜드 할인 카드 안내입니다.");
+        System.out.println(brandName + " 검색 결과, 브랜드 할인 카드 안내입니다.");
 
         query = "SELECT cafeName, cardId, discounttype, discountvalue FROM discountInfo WHERE cafename LIKE '%' || '" + brandName + "' || '%';";
         ResultSet rs = st.executeQuery(query);
@@ -147,7 +147,7 @@ public class DiscountInfoRepository {
     }
 
     public void queryCardName(String cardName) throws SQLException {
-        System.out.println(cardName + ", 해당 카드 할인 브랜드 안내입니다.");
+        System.out.println(cardName + " 검색 결과, 카드 할인 브랜드 안내입니다.");
 
         query = "SELECT cardid, monthlyusecount, cardName FROM cardInfo WHERE cardname LIKE '%' || '" + cardName + "' || '%';";
         ResultSet rs = st.executeQuery(query);
