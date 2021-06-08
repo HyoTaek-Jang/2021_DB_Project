@@ -30,7 +30,8 @@ public class CardInfoRepository {
     public void importCSV() throws SQLException {
 //        절대경로로 개인마다 바꿔야함.
 //        경로에 한글이 껴있으면 안됨.
-        query = "COPY CardInfo FROM '" + folderLocation + "\\cardInfo.csv' DELIMITER ',' CSV HEADER;";
+//        query = "\\copy CardInfo FROM '" + folderLocation + "\\cardInfo.csv' DELIMITER ',' CSV HEADER;";
+        query = "copy CardInfo FROM '/private/tmp/cardInfo.csv' DELIMITER ',' CSV HEADER;";
         st.executeUpdate(query);
 
     }
