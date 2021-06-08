@@ -1,6 +1,7 @@
 import config.DB;
 import service.AdministratorService;
 import service.BenefitService;
+import service.CardUseService;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,11 +37,12 @@ public class Main {
 //        init service
         AdministratorService adminService = new AdministratorService(st);
         BenefitService benefitService = new BenefitService(st);
+        CardUseService cardUseService = new CardUseService(st);
 
         System.out.println("Run Program");
         while (command != 0){
             System.out.println("0 : Exit Program");
-            System.out.println("1 : Update AppliedCardTable");
+            System.out.println("1 : Use Card and Show Remains");
             System.out.println("8 : Search Benefits");
             System.out.println("9 : Set Tables | Administrator only");
             System.out.println("10 : Show Tables | Administrator only");
@@ -56,7 +58,7 @@ public class Main {
                         System.out.println("프로그램을 종료합니다.");
                     }
 
-                    case 1 -> adminService.updateAppliedCard(st);
+                    case 1 -> cardUseService.searchCardUse();
                     case 8 -> benefitService.searchBenefit();
                     case 9 -> adminService.setTables();
                     case 10 -> adminService.showTables();
