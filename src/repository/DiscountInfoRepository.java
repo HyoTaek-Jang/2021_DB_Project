@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DiscountInfoRepository {
+
     class DiscountInfo {
         private String cafeName;
         private String cardId;
@@ -39,10 +40,36 @@ public class DiscountInfoRepository {
         }
     }
 
+    class CardInfo{
+        private String cardId;
+        private String monthlyUseCount;
+        private String cardName;
+
+
+        public CardInfo(String cardId, String monthlyUseCount, String cardName) {
+            this.cardId = cardId;
+            this.monthlyUseCount = monthlyUseCount;
+            this.cardName = cardName;
+        }
+
+        public String getCardName() {
+            return cardName;
+        }
+
+        public String getCardId() {
+            return cardId;
+        }
+
+        public String getMonthlyUseCount() {
+            return monthlyUseCount;
+        }
+    }
+
     private final Statement st;
     private String query;
     private final String folderLocation = Env.getFolderLocation();
     ArrayList<DiscountInfo> discountInfos = new ArrayList<>();
+    ArrayList<CardInfo> cardInfos = new ArrayList<>();
 
 
     public DiscountInfoRepository(Statement st) {
@@ -98,7 +125,7 @@ public class DiscountInfoRepository {
 
     }
 
-    public void queryDiscountInfo() throws SQLException {
+    private void queryDiscountInfo() throws SQLException {
         for (DiscountInfo discountInfo : discountInfos) {
 
             query = "SELECT cardname, monthlyusecount FROM cardInfo WHERE cardId = " + discountInfo.getCardId() + ";";
@@ -117,5 +144,42 @@ public class DiscountInfoRepository {
 
         System.out.println();
         System.out.println(cardName + " | " + discountValue + type + monUseCount);
+    }
+
+    public void queryCardName(String cardName) throws SQLException {
+        System.out.println(cardName + ", 해당 카드 할인 브랜드 안내입니다.");
+
+        query = "SELECT cardid, monthlyusecount, cardName FROM cardInfo WHERE cardname LIKE '%' || '" + cardName + "' || '%';";
+        ResultSet rs = st.executeQuery(query);
+        boolean check = false;
+
+        while (rs.next()) {
+            check = true;
+            cardInfos.add(new CardInfo(rs.getString(1), rs.getString(2), rs.getString(3)));
+        }
+
+        if (check) queryCardInfo();
+
+    }
+
+    private void queryCardInfo() throws SQLException {
+        for (CardInfo cardInfo : cardInfos) {
+
+            query = "SELECT cafeName, discounttype, discountvalue FROM discountInfo WHERE cardId = "+Integer.parseInt(cardInfo.getCardId())+";";
+
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                printCardNameSearch(cardInfo.getCardName(), rs.getString(1), rs.getString(2), rs.getString(3), cardInfo.getMonthlyUseCount());
+            }
+        }
+    }
+
+    public void printCardNameSearch(String cardName,String cafeName, String discountType, String discountValue, String monUse){
+        String monUseCount = (Integer.parseInt(monUse) > 50) ? "횟수 제한이 없습니다." : "월 " + monUse + "회 사용 가능합니다.";
+        String type = discountType.equals("p") ? "원 가격 할인 | " : "퍼센트 할인 | ";
+
+        System.out.println();
+        System.out.println(cardName +" | "+ cafeName + " | " + discountValue + type + monUseCount);
     }
 }

@@ -49,8 +49,9 @@ public class BenefitService {
     }
 
 
-    public void cardSearch() {
-        System.out.println("검색을 카드의 이름을 입력하세요.");
+    public void cardSearch() throws SQLException {
+        System.out.print("검색을 카드의 이름을 입력하세요.");
         String cardName = scan.nextLine();
+        discountInfoRepository.queryCardName(cardName);
     }
 }
