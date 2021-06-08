@@ -78,6 +78,19 @@ public class AdministratorService {
     public void updateAppliedCard(Statement st) throws SQLException {
 
         Scanner scan = new Scanner(System.in);
+        //매달 1일 혜택 사용가능 횟수 초기화
+        String date;
+        System.out.print("오늘 날짜 입력 : ");
+        date = scan.nextLine();
+        if(Integer.parseInt(date)%100 == 1){
+            System.out.println("카드혜택 사용횟수가 초기화됩니다.");
+            query = "UPDATE AppliedCard \n" +
+                    "SET useRemain = (SELECT monthlyUseCount FROM CardInfo WHERE AppliedCard.cardID = CardInfo.cardID);\n";
+
+            st.executeUpdate(query);
+            appliedCardRepository.showTable();
+        }
+
         //유저가 카드를 사용한 경우 남아있는 사용횟수가 1 감소
         String uID, cID;
         System.out.print("사용자 id 입력 : ");
