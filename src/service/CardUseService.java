@@ -34,7 +34,6 @@ public class CardUseService {
         System.out.println("1. 카드 사용하기");
         System.out.println("2. 카드 사용가능횟수 조회");
         System.out.println("3. 카드 사용가능횟수 조회(전체)");
-        System.out.println("10. -- [카드회사] 카드 혜택 사용가능횟수 변경 --");
         System.out.print("원하시는 검색 옵션를 입력하세요. : ");
         switchOption(parseInt(scan.nextLine()));
     }
@@ -44,7 +43,6 @@ public class CardUseService {
             case 1 -> useCard();
             case 2 -> showUseRemain();
             case 3 -> showUseRemain_all();
-            case 10 -> updateCard();
             default -> System.out.println("잘못된 입력입니다. 메뉴 선택으로 돌아갑니다.");
 
         }

@@ -88,7 +88,7 @@ public class MapApi {
 		}
 
 		while(true) {
-			System.out.println("현재 위치로 선택할 장소 번호를 입력하세요 : ");
+			System.out.print("현재 위치로 선택할 장소 번호를 입력하세요 : ");
 			command = Integer.parseInt(scan.nextLine());
 			if (command >=1 && command <= 15) {
 				userRepository.queryLocation(uID, Double.parseDouble(loc[command-1][0]), Double.parseDouble(loc[command-1][1]));
@@ -104,10 +104,5 @@ public class MapApi {
 		String cafeName = scan.nextLine();
 		cafeRepository.getCafeInfo(uID, cafeName);
 	}
-//	public static void main(String[] args) throws Exception {
-//		getCafeInfo("127.05902969025047", "37.51207412593136", "스타벅스");
-//		getCafeInfo("127.05902969025047", "37.51207412593136", "커피빈");
-//		getCafeInfo("127.05902969025047", "37.51207412593136", "이디야");
-//		getLocation("아주대학교");
-//	}
+
 }

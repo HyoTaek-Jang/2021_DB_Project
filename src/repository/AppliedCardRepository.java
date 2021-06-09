@@ -145,9 +145,9 @@ public class AppliedCardRepository {
 
     public void updateCardUse() throws SQLException {
         //trigger -> 카드사에서 이벤트로 혜택의 사용가능횟수를 늘렸을 경우 유저의 카드에도 바로 적용
-        System.out.print("--[카드회사]-- 변경할 카드의 ID를 입력하세요. : ");
+        System.out.print("변경할 카드의 ID를 입력하세요. : ");
         String cardID = scan.nextLine();
-        System.out.print("--[카드회사]-- 변경할 카드의 혜택횟수를 입력하세요. : ");
+        System.out.print("변경할 카드의 혜택횟수를 입력하세요. : ");
         String useCount_by_CP = scan.nextLine();
 
         query = "CREATE OR REPLACE FUNCTION updateAppliedCardInfo() RETURNS TRIGGER AS \n" +
@@ -166,7 +166,7 @@ public class AppliedCardRepository {
                 "UPDATE cardInfo SET monthlyUseCount = "+useCount_by_CP+" WHERE cardID = " + cardID + ";";
 
         st.executeUpdate(query);
-        System.out.println("--[카드회사]-- 변경이 완료되었습니다.");
+        System.out.println("변경이 완료되었습니다.");
 
     }
 }

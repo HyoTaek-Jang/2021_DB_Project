@@ -34,6 +34,8 @@ public class AdministratorService {
         userRepository.insertUser();
         System.out.println("User 데이터 import를 완료했습니다.");
 
+        System.out.println();
+
         cafeRepository.createTable();
         System.out.println("cafe table 생성을 완료했습니다.");
         cafeRepository.importCSV();
