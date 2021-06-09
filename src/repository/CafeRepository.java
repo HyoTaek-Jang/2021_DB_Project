@@ -154,5 +154,6 @@ public class CafeRepository {
         for (int i = 0; i < 15; i++) {
             System.out.printf("%-5d%-20s%-20s%-30s%-30s%-10.3f\n", distInfos.get(i).cafeID, distInfos.get(i).cafeName, distInfos.get(i).branchName, distInfos.get(i).roadNameAddress, distInfos.get(i).numberAddress, distInfos.get(i).distance);
         }
+        distInfos.clear();
     }
 }
