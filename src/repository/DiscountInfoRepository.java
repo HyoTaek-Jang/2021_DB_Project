@@ -92,7 +92,8 @@ public class DiscountInfoRepository {
     public void importCSV() throws SQLException {
 //        절대경로로 개인마다 바꿔야함.
 //        경로에 한글이 껴있으면 안됨.
-        query = "COPY discountInfo FROM '" + folderLocation + "\\discountInfo.csv' DELIMITER ',' CSV HEADER;";
+//        query = "\\copy discountInfo FROM '" + folderLocation + "/discountInfo.csv' DELIMITER ',' CSV HEADER;";
+        query = "copy discountInfo FROM '/private/tmp/discountInfo.csv' DELIMITER ',' CSV HEADER;";
         st.executeUpdate(query);
 
     }

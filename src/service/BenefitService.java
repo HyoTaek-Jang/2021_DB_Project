@@ -38,7 +38,6 @@ public class BenefitService {
             case 1 -> brandSearch();
             case 2 -> cardSearch();
             default -> System.out.println("잘못된 입력입니다. 메뉴 선택으로 돌아갑니다.");
-
         }
     }
 

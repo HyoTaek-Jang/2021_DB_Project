@@ -1,6 +1,8 @@
 import config.DB;
 import service.AdministratorService;
 import service.BenefitService;
+import service.MapApi;
+import service.CardUseService;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -36,11 +38,16 @@ public class Main {
 //        init service
         AdministratorService adminService = new AdministratorService(st);
         BenefitService benefitService = new BenefitService(st);
+        MapApi mapApi  = new MapApi(st);
+        CardUseService cardUseService = new CardUseService(st);
 
         System.out.println("Run Program");
         while (command != 0){
             System.out.println("0 : Exit Program");
             System.out.println("1 : Update AppliedCardTable");
+            System.out.println("6 : Find Near Cafe");
+            System.out.println("7 : Set User Location");
+            System.out.println("1 : Use Card and Show Remains");
             System.out.println("8 : Search Benefits");
             System.out.println("9 : Set Tables | Administrator only");
             System.out.println("10 : Show Tables | Administrator only");
@@ -55,8 +62,9 @@ public class Main {
                         DB.closeDB();
                         System.out.println("프로그램을 종료합니다.");
                     }
-
-                    case 1 -> adminService.updateAppliedCard(st);
+                    case 1 -> cardUseService.searchCardUse();
+                    case 6 -> mapApi.nearCafe(123);
+                    case 7 -> mapApi.setUserLocation(123);
                     case 8 -> benefitService.searchBenefit();
                     case 9 -> adminService.setTables();
                     case 10 -> adminService.showTables();
@@ -64,6 +72,8 @@ public class Main {
                 }
             }catch (SQLException sqlEx) {
                 System.out.println("Error : "+ sqlEx);
+            } catch (Exception e) {
+                System.out.println("Error : "+ e);
             }
 
             System.out.println("\n------------------------------------------------------------------");
