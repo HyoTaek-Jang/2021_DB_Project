@@ -43,14 +43,13 @@ public class Main {
 
         System.out.println("Run Program");
         while (command != 0){
-            System.out.println("0 : Exit Program");
-            System.out.println("1 : Update AppliedCardTable");
-            System.out.println("6 : Find Near Cafe");
-            System.out.println("7 : Set User Location");
-            System.out.println("1 : Use Card and Show Remains");
-            System.out.println("8 : Search Benefits");
-            System.out.println("9 : Set Tables | Administrator only");
-            System.out.println("10 : Show Tables | Administrator only");
+            System.out.println("0 : 프로그램 종료");
+            System.out.println("1 : 카드 사용 및 남은 혜택 조회");
+            System.out.println("2 : 가까운 가맹점 찾기");
+            System.out.println("3 : 현재 위치 설정");
+            System.out.println("4 : 혜택 조회");
+            System.out.println("9 : Set Tables | 관리자 전용");
+            System.out.println("10 : Show Tables | 관리자 전용");
             System.out.print("원하시는 메뉴를 선택해주세요. : ");
 
             command = Integer.parseInt(scan.nextLine());
@@ -63,9 +62,9 @@ public class Main {
                         System.out.println("프로그램을 종료합니다.");
                     }
                     case 1 -> cardUseService.searchCardUse();
-                    case 6 -> mapApi.nearCafe(123);
-                    case 7 -> mapApi.setUserLocation(123);
-                    case 8 -> benefitService.searchBenefit();
+                    case 2 -> mapApi.nearCafe(123);
+                    case 3 -> mapApi.setUserLocation(123);
+                    case 4 -> benefitService.searchBenefit();
                     case 9 -> adminService.setTables();
                     case 10 -> adminService.showTables();
                     default -> System.out.println("잘못된 입력입니다. 다시 입력해주세요.");

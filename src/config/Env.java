@@ -3,10 +3,10 @@ package config;
 public class Env {
 
 //기윤
-    private static String url = "jdbc:postgresql://127.0.0.1:5432/db_project";
-    private static String user = "postgres";
-    private static String pwd = "2390";
-    private static String folderLocation = "/Users/crakel/Desktop/git_workspace/2021_DB_Project/data";
+//    private static String url = "jdbc:postgresql://127.0.0.1:5432/db_project";
+//    private static String user = "postgres";
+//    private static String pwd = "2390";
+//    private static String folderLocation = "/Users/crakel/Desktop/git_workspace/2021_DB_Project/data";
 
 
 
