@@ -11,17 +11,17 @@ public class Env {
 
 
 //지호
-    private static String url = "jdbc:postgresql://localhost/DB_project";
-    private static String user = "postgres";
-    private static String pwd = "qwerty1234";
-    private static String folderLocation = "C:\\Users\\Jiho\\DB";
+//    private static String url = "jdbc:postgresql://localhost/DB_project";
+//    private static String user = "postgres";
+//    private static String pwd = "qwerty1234";
+//    private static String folderLocation = "C:\\Users\\Jiho\\DB";
 
 
 // 택
-//    private static String url = "jdbc:postgresql://localhost/postgres";
-//    private static String user = "postgres";
-//    private static String pwd = "1234";
-//    private static String folderLocation = "C:\\Users\\HYOTAEK\\Desktop";
+    private static String url = "jdbc:postgresql://localhost/postgres";
+    private static String user = "postgres";
+    private static String pwd = "1234";
+    private static String folderLocation = "C:\\Users\\HYOTAEK\\Desktop";
 
     public static String getUrl() {
         return url;
